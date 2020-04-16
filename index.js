@@ -1,32 +1,31 @@
-import React from 'react';
-import { render } from 'react-dom';
-import './style.css';
+import React from "react";
+import { render } from "react-dom";
+import "./style.css";
 
 class App extends React.Component {
-
-  renderTable=()=>{
-    
-    const table=[10];
-    const n=5;
-      for(var i=1;i<11;i++)
-      {
-        table.push(n+" X "+i+" = "+n*i);
-      }
-    return(table)
-  }
-    render(){
-    const number=5;
+  renderTable = () => {
+    const data = [];
+    const n = 5;
+    for (var i = 1; i < 11; i++) {
+      data.push(n + " X " + i + " = " + n * i);
+    }
+    const table = data.map(t => (
+      <tr key={t}>
+        <td>{t}</td>
+      </tr>
+    ));
+    return table;
+  };
+  render() {
+    const number = 5;
     return (
-      <div>
-        <h1>Multiplication Table of number 5</h1>
+      <div align="center">
+        <h1>React Multiplication Table of number 5</h1>
         <table>
-          <tbody>            
-            {this.renderTable()}
-          </tbody>
+          <tbody>{this.renderTable()}</tbody>
         </table>
-        
       </div>
     );
+  }
 }
-}
-render(<App />, document.getElementById('root'));
+render(<App />, document.getElementById("root"));
